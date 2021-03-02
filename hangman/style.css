@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+}
+
+.word {
+  height: 5rem;
+  padding-top: 30px;
+  padding-bottom: -15px;
+  text-align: center;
+}
+
+hr {
+  margin: 15px 0;
+}
