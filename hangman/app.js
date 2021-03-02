@@ -12,6 +12,21 @@ Hangman.prototype.getPuzzle = function () {
   return puzzle;
 };
 
+//! Status function test
+Hangman.prototype.calculateStatus = function () {
+  const finished = this.word.every((letter) => {
+    return this.guessedLetters.includes(letter);
+  });
+
+  if (this.remainingGuesses === 0) {
+    this.status = 'failed';
+  } else if (finished) {
+    this.status = 'finished';
+  } else {
+    this.status = 'playing';
+  }
+};
+
 //! makeGuess function
 Hangman.prototype.makeGuess = function (guess) {
   guess = guess.toLowerCase();
@@ -54,6 +69,7 @@ console.log(game1.remainingGuesses);
 
 getRemainingGuesses(game1);
 displayWrongGuesses(game1);
+
 //! EVENT LISTENER
 document.querySelector('.inputForm').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -75,4 +91,5 @@ document.querySelector('.inputForm').addEventListener('submit', function (e) {
   // update display with new values
   getRemainingGuesses(game1);
   displayWrongGuesses(game1);
+  calculateStatus();
 });
