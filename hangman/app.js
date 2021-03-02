@@ -14,16 +14,20 @@ Hangman.prototype.getPuzzle = function () {
 
 //! Status function test
 Hangman.prototype.calculateStatus = function () {
+  // makes sure every letter has a match before declaring 'finished'
   const finished = this.word.every((letter) => {
     return this.guessedLetters.includes(letter);
   });
 
   if (this.remainingGuesses === 0) {
     this.status = 'failed';
+    console.log(this.status);
   } else if (finished) {
     this.status = 'finished';
+    console.log(this.status);
   } else {
     this.status = 'playing';
+    console.log(this.status);
   }
 };
 
@@ -44,6 +48,7 @@ Hangman.prototype.makeGuess = function (guess) {
   } else {
     alert('Please enter a letter');
   }
+  this.calculateStatus();
 };
 // create new game
 const game1 = new Hangman('cat', 2);
@@ -91,5 +96,4 @@ document.querySelector('.inputForm').addEventListener('submit', function (e) {
   // update display with new values
   getRemainingGuesses(game1);
   displayWrongGuesses(game1);
-  calculateStatus();
 });
