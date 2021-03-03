@@ -33,7 +33,13 @@ Hangman.prototype.calculateStatus = function () {
 };
 
 //! Show message for each status
-Hangman.prototype.getStatusMessage = function () {};
+Hangman.prototype.getStatusMessage = function () {
+  if (this.status === 'failed') {
+    return `Nice try! The word was ${this.word.join('')}`;
+  } else if (this.status === 'finished') {
+    return `Nice job! You guessed the word!`;
+  }
+};
 
 //! makeGuess function
 Hangman.prototype.makeGuess = function (guess) {
