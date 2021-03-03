@@ -19,6 +19,7 @@ Hangman.prototype.calculateStatus = function () {
     return this.guessedLetters.includes(letter);
   });
 
+  // declare status according to options
   if (this.remainingGuesses === 0) {
     this.status = 'failed';
     console.log(this.status);
@@ -30,6 +31,9 @@ Hangman.prototype.calculateStatus = function () {
     console.log(this.status);
   }
 };
+
+//! Show message for each status
+Hangman.prototype.getStatusMessage = function () {};
 
 //! makeGuess function
 Hangman.prototype.makeGuess = function (guess) {
