@@ -3,12 +3,34 @@
  * @param {string} word - word to be guessed
  * @param {number} remainingGuesses - number of guesses
  */
-const Hangman = function (word, remainingGuesses) {
-  this.word = word.toLowerCase().split('');
-  this.remainingGuesses = remainingGuesses;
-  this.guessedLetters = [];
-  this.status = 'playing';
-};
+class Hangman {
+  constructor(word, remainingGuesses) {
+    this.word = word;
+    this.remainingGuesses = remainingGuesses;
+    this.guessedLetters = [];
+    this.status = 'playing';
+  }
+  getPuzzle() {
+    let puzzle = '';
+
+    this.word.forEach((letter) => {
+      if (this.guessedLetters.includes(letter) || letter === ' ') {
+        puzzle += letter;
+      } else {
+        puzzle += '*';
+      }
+    });
+
+    return puzzle;
+  }
+}
+
+// const Hangman = function (word, remainingGuesses) {
+//   this.word = word.toLowerCase().split('');
+//   this.remainingGuesses = remainingGuesses;
+//   this.guessedLetters = [];
+//   this.status = 'playing';
+// };
 
 /**
  * function that desguises letters and displays
