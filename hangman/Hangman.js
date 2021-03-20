@@ -1,36 +1,39 @@
-/**
- *
- * @param {string} word - word to be guessed
- * @param {number} remainingGuesses - number of guesses
- */
-// class Hangman {
-//   constructor(word, remainingGuesses) {
-//     this.word = word;
-//     this.remainingGuesses = remainingGuesses;
-//     this.guessedLetters = [];
-//     this.status = 'playing';
-//   }
-//   getPuzzle() {
-//     let puzzle = '';
+class Hangman {
+  constructor(word, remainingGuesses) {
+    this.word = word.toLowerCase().split('');
+    this.remainingGuesses = remainingGuesses;
+    this.guessedLetters = [];
+    this.status = 'playing';
+  }
+  getStatusMessage() {
+    if (this.status === 'playing') {
+      return ``;
+    }
+  }
 
-//     this.word.forEach((letter) => {
-//       if (this.guessedLetters.includes(letter) || letter === ' ') {
-//         puzzle += letter;
-//       } else {
-//         puzzle += '*';
-//       }
-//     });
+  makeGuess(guess) {
+    guess = guess.toLowerCase();
+    const isUnique = !this.guessedLetters.includes(guess);
+    const isBadGuess = !this.word.includes(guess);
 
-//     return puzzle;
-//   }
-// }
+    if (this.status !== 'playing') {
+      return;
+    }
+  }
 
-const Hangman = function (word, remainingGuesses) {
-  this.word = word.toLowerCase().split('');
-  this.remainingGuesses = remainingGuesses;
-  this.guessedLetters = [];
-  this.status = 'playing';
-};
+  calculateStatus() {
+    const finished = this.word.every((letter) =>
+      this.guessedLetters.includes(letter)
+    );
+  }
+}
+
+// const Hangman = function (word, remainingGuesses) {
+//   this.word = word.toLowerCase().split('');
+//   this.remainingGuesses = remainingGuesses;
+//   this.guessedLetters = [];
+//   this.status = 'playing';
+// };
 
 /**
  * function that desguises letters and displays

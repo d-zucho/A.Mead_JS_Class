@@ -1,17 +1,3 @@
-Hangman.prototype.getPuzzle = function () {
-  let puzzle = '';
-
-  this.word.forEach((letter) => {
-    if (this.guessedLetters.includes(letter) || letter === ' ') {
-      puzzle += letter;
-    } else {
-      puzzle += '*';
-    }
-  });
-
-  return puzzle;
-};
-
 //! Status function test
 Hangman.prototype.calculateStatus = function () {
   // makes sure every letter has a match before declaring 'finished'
