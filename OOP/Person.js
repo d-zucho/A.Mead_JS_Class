@@ -46,7 +46,22 @@ class Student extends Person {
     super(fName, lName, age, likes);
     this.grade = grade;
   }
+
+  getBio() {
+    if (this.grade >= 70) {
+      return `${this.fName} is passing the class. Great job!`;
+    } else {
+      return `${this.fName} is failing the class. Need more effort`;
+    }
+  }
+
+  updateGrade(points) {
+    this.grade = points + this.grade;
+  }
 }
 
-const me = new Employee('Danny', 'Libor', 29, 'Unemployed');
+const me = new Student('Danny', 'Libor', 29, 87);
+console.log(me.getBio());
+
+me.updateGrade(-29);
 console.log(me.getBio());
