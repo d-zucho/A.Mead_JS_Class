@@ -1,6 +1,6 @@
 //** --- NEW Class Syntax --- */
 
-class PersonClass {
+class Person {
   //* New Constructor Function //
   constructor(fName, lName, age, likes = []) {
     //properties
@@ -25,44 +25,28 @@ class PersonClass {
   }
 }
 
-const myPerson = new PersonClass('Danny', 'Libor', 29, ['Tv', 'Comics']);
-console.log(myPerson.getBio());
+class Employee extends Person {
+  constructor(fName, lName, age, position, likes) {
+    super(fName, lName, age, likes);
+    this.position = position;
+  }
 
-// //** OLD SYNTAX - Constructor Function */
-// const Person = function (fName, lName, age, likes) {
-//   this.fName = fName;
-//   this.lName = lName;
-//   this.age = age;
-//   this.likes = likes;
-// };
+  getBio() {
+    // Andrew is a {position}
+    return `${this.fName} is currently ${this.position}`;
+  }
 
-// // shared method
-// Person.prototype.getBio = function () {
-//   let bio = `${this.fName} is ${this.age} years old.`;
+  getYearsLeft() {
+    return 65 - this.age;
+  }
+}
 
-//   this.likes.forEach((like) => {
-//     // MUST me arrow property V
-//     // ! --- We need to use arrow function here since
-//     // ! --- it has no 'this' binded to it like regular functions
-//     bio += ` ${this.fName} likes ${like}.`;
-//   });
+class Student extends Person {
+  constructor(fName, lName, age, grade, likes) {
+    super(fName, lName, age, likes);
+    this.grade = grade;
+  }
+}
 
-//   return bio;
-// };
-
-// // can also use arguements in prototype functions to set/change attributes
-
-// //change name function
-// Person.prototype.setName = function (fullName) {
-//   const names = fullName.split(' ');
-//   this.fName = names[0];
-//   this.lName = names[1];
-// };
-
-// const me = new Person('Danny', 'Libor', 29, ['coding', 'comics', 'writing']);
-// console.log(me.getBio());
-
-// const person2 = new Person('Luke', 'Shae', 12);
-
-// me.setName('Nick Bergright');
-// console.log(me.getBio());
+const me = new Employee('Danny', 'Libor', 29, 'Unemployed');
+console.log(me.getBio());
