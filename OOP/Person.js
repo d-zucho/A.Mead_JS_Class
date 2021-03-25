@@ -18,7 +18,7 @@ class Person {
     return bio;
   }
 
-  setName(fullName) {
+  set fullName(fullName) {
     const names = fullName.split(' ');
     const firstName = names[0];
     const lastName = names[1];
@@ -61,6 +61,7 @@ class Student extends Person {
 }
 
 const me = new Student('Danny', 'Libor', 29, 87);
+me.fullName = 'James Bond';
 console.log(me.getBio());
 
 me.updateGrade(-29);
